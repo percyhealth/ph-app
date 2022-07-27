@@ -4,9 +4,72 @@ const Separator = () => (
   <View style={styles.separator} />
 );
 
-function QRender(qList){
-
+var boolList = [];
+var place = 0;
+function overAll(qList){
+  function EachButton(string, theList, boolList2){
+    const [response, setResponse] = useState ("Not Selected");
+    let length = theList.length;
+    for(var i = 0; i < length; i++){
+      if(string == theList[i]){
+        break;
+      }else{
+        place++;
+      }
+    }
+    function bStyle(){
+      if((boolList2[place])){
+        //response = "true";
+        return(styles.buttonStyleOn);
+      }else if (!(boolList2[place])){
+        //response = "false";
+        return(styles.buttonStyleOff);
+      }
+    }
+    function pressFunc(){
+      if(place == 0){
+        setResponse(string);
+        Alert.alert("first");
+      }else if(place == 1){
+        setResponse(string);
+        Alert.alert("second");
+      }
+    };
+    
+    return(
+      <View>
+        <View style = {bStyle()}>
+          <Text>{boolList[place].toString()}</Text>
+          <Text>{place}</Text>
+          <Text>{response}</Text>
+          <Button 
+            title= {string} 
+            color = "black"
+            onPress={() => pressFunc()}
+          />
+        </View>
+        <Separator/>
+      </View>
+      
+    );
+  }
+  function QRender(){
+    const types = qList;
+    for (var i = 0; i < types.length; i++){
+      boolList.push(false);
+    }
+    boolList[0] = true;
+    return(
+      <View>
+        {types.map(type=>(
+          EachButton(type, qList, boolList)
+        ))}
+      </View>
+    )
+  }
+  return(QRender());
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -65,3 +128,4 @@ const styles = StyleSheet.create({
   
 });
 
+export default overAll;
