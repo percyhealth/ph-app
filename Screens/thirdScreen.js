@@ -8,7 +8,7 @@ const Separator = () => (
 
 const ThirdScreenFunc = ({navigation}) => {
   
-  const types = [ "Laurel", "John"]
+  const types = ["Laurel", "John"]
   function TheRendered(){
     return(
       QRender(types)
