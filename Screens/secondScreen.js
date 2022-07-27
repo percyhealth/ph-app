@@ -29,12 +29,12 @@ const Separator = () => (
     const [secondButton, setSecondButton] = useState(false); 
     const [thirdButton, setThirdButton] = useState(false); 
     function navigate(){
-      navigation.navigate("firstScreen");
+      navigation.navigate("thirdScreen");
     }
     function togNext(bNext){
       if(bNext){
         Alert.alert("You May Pass");
-        //navigate()
+        navigate()
       }else{
         Alert.alert("Please select a response");
       }

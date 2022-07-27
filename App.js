@@ -6,6 +6,7 @@ import HomeScreen1 from './Screens/HomeScreen1';
 // import ThirdScreen from './Screens/thirdScreen';
 import ProfileScreen1 from './Screens/profileScreen1';
 import HomeAddScreen from './Screens/homeAddScreen';
+import ThirdScreen from './Screens/thirdScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -25,7 +26,7 @@ function AddSurvey() {
       <Stack.Screen name="homeAddScreen" component={HomeAddScreen}  options={{headerShown: false}}/>
       <Stack.Screen name="firstScreen" component={FirstScreen} options= {{title: "SF-36"}}/>
       <Stack.Screen name="secondScreen" component={SecondScreen} options= {{title: "SF-36"}}/>
-      {/* <Stack.Screen name="thirdScreen" component={ThirdScreen} options= {{title: "SF-36"}}/> */}
+      <Stack.Screen name="thirdScreen" component={ThirdScreen} options= {{title: "Third Screen"}}/>
     </Stack.Navigator>
   );
 }
