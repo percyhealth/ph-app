@@ -15,12 +15,14 @@ import SF36 from './SF36.json';
 // const Separator = () => <View style={styles.separator} />;\\
 const responsesArray = SF36.questions[0].responses
 const ThirdScreenFunc = ({navigation}) => {
-  const subTitle = (
-  <Text style={styles.head_title}>
-    How does <Text style={styles.title_bold}>your health limit you</Text>{' '}
-    in
-  </Text>);
-  const mainTitle = "Moderate activities, such as moving a table, pushing a vacuum cleaner bowling, or playing golf";
+  // const subTitle = (
+  // <Text style={styles.head_title}>
+  //   How does <Text style={styles.title_bold}>your health limit you</Text>{' '}
+  //   in
+  // </Text>);
+  const subTitle = SF36.questions[0].instructions;
+  //const mainTitle = "Moderate activities, such as moving a table, pushing a vacuum cleaner bowling, or playing golf";
+  const mainTitle = SF36.questions[0].question;
   const responses = [responsesArray[0],responsesArray[1], responsesArray[2],responsesArray[3],responsesArray[4]];
   function TheRendered() {
     return QRender(responses, mainTitle, subTitle);

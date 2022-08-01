@@ -146,7 +146,6 @@ function overAll(qList, mainTitle, subTitle) {
   title: {
     textAlign: 'left',
     marginVertical: 16,
-    //fontFamily: "SF Pro Display",
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 22,
@@ -160,7 +159,6 @@ function overAll(qList, mainTitle, subTitle) {
   buttonStyleOn: {
     backgroundColor: '#007AFF',
     borderColor: '#007AFF',
-    //borderColor: 'black',
     borderRadius: 10,
     borderWidth: 1,
   },

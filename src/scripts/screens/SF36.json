@@ -4,11 +4,6 @@
     "standard_frequency": "weekly",
     "description": "Questionaire to measure quality of life",
     "scoring_schema": [],
-    "q1":[{
-        "one":{
-            "bro": 1
-        }
-    }],
     "questions": [
         {
             "instructions": null,
