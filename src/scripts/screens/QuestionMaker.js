@@ -108,7 +108,7 @@ function overAll(qList, mainTitle, subTitle) {
           {mainTitle}
         </Text>
         {qList.map(type => EachButton(type, qList))}
-        <View style={styles.filler} />
+        <View style={fillerSize()} />
         <View style = {continueBStyle()}>
           <Button
           title = "Continue"
@@ -120,7 +120,15 @@ function overAll(qList, mainTitle, subTitle) {
     );
   }
   return QRender();
- }
+  function fillerSize(){
+    var distance = 92 - ((qList.length - 3)*28)
+    return(
+      {
+        marginVertical: distance,
+      }
+    )
+  }
+}
   
  const styles = StyleSheet.create({
   container: {
