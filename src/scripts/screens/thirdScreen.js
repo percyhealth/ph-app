@@ -23,6 +23,7 @@ const ThirdScreenFunc = ({navigation}) => {
   const subTitle = SF36.questions[0].instructions;
   //const mainTitle = "Moderate activities, such as moving a table, pushing a vacuum cleaner bowling, or playing golf";
   const mainTitle = SF36.questions[0].question;
+  //SF36.questions[1].responses.num
   const responses = [responsesArray[0],responsesArray[1], responsesArray[2],responsesArray[3],responsesArray[4]];
   function TheRendered() {
     return QRender(responses, mainTitle, subTitle);
