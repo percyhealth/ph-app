@@ -1,19 +1,11 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Button,
-  View,
-  SafeAreaView,
-  Text,
-  Alert,
-  TouchableHighlight,
-} from 'react-native';
 import FirstScreen from './src/scripts/screens/firstScreen';
 import SecondScreen from './src/scripts/screens/secondScreen';
 import HomeScreen1 from './src/scripts/screens/HomeScreen1';
 import ProfileScreen1 from './src/scripts/screens/profileScreen1';
 import HomeAddScreen from './src/scripts/screens/homeAddScreen';
 import ThirdScreen from './src/scripts/screens/thirdScreen';
+import FourthScreen from './src/scripts/screens/fourthScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -42,17 +34,22 @@ function AddSurvey() {
       <Stack.Screen
         name="firstScreen"
         component={FirstScreen}
-        options={{title: 'SF-36'}}
+        options={{title: 'SF-36 1'}}
       />
       <Stack.Screen
         name="secondScreen"
         component={SecondScreen}
-        options={{title: 'SF-36'}}
+        options={{title: 'SF-36 2'}}
       />
       <Stack.Screen
         name="thirdScreen"
         component={ThirdScreen}
-        options={{title: 'Third Screen'}}
+        options={{title: 'SF-36 3'}}
+      />
+      <Stack.Screen
+        name="fourthScreen"
+        component={FourthScreen}
+        options={{title: 'SF-36 4'}}
       />
     </Stack.Navigator>
   );

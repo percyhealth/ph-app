@@ -10,7 +10,10 @@ import {
 } from 'react-native';
 const Separator = () => <View style={styles.separator} />;
  
-function overAll(qList, mainTitle, subTitle) {
+function overAll(qList, mainTitle, subTitle, nextScreen, {navigation}) {
+  function navigate() {
+    navigation.navigate(nextScreen);
+  }
   const [currentAnswer, setCurrentAnswer] = useState("");
   function resetList(){
     paraList = [];
@@ -31,14 +34,6 @@ function overAll(qList, mainTitle, subTitle) {
       } else {
         place++;
       }
-    }
-    function currentResponse(){
-      for(var i = 0; i< boolList.length;i++){
-        if(boolList[i]){
-          return(qList[i]);
-        }
-      }
-      return("");
     }
     function bStyle() {
       if(boolList[place]){
@@ -86,8 +81,7 @@ function overAll(qList, mainTitle, subTitle) {
   function togNext(){
     var opSelected = optionSelected();
     if(opSelected){
-      Alert.alert('You May Pass');
-      setCurrentAnswer(currentResponse());
+      navigate();
     }else{
       Alert.alert('Please select a response');
     }
