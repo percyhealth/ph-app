@@ -11,6 +11,7 @@ import {
 const Separator = () => <View style={styles.separator} />;
  
 function overAll(qList, mainTitle, subTitle) {
+  const [currentAnswer, setCurrentAnswer] = useState("");
   function resetList(){
     paraList = [];
     for (var i = 0; i < qList.length; i++) {
@@ -31,6 +32,14 @@ function overAll(qList, mainTitle, subTitle) {
         place++;
       }
     }
+    function currentResponse(){
+      for(var i = 0; i< boolList.length;i++){
+        if(boolList[i]){
+          return(qList[i]);
+        }
+      }
+      return("");
+    }
     function bStyle() {
       if(boolList[place]){
         return (styles.buttonStyleOn)
@@ -49,6 +58,7 @@ function overAll(qList, mainTitle, subTitle) {
       tempBool  = resetList();
       tempBool[place] = !boolList[place];
       setBoolList(tempBool);
+      setCurrentAnswer(qList[place]);
     }
   
     return (
@@ -77,6 +87,7 @@ function overAll(qList, mainTitle, subTitle) {
     var opSelected = optionSelected();
     if(opSelected){
       Alert.alert('You May Pass');
+      setCurrentAnswer(currentResponse());
     }else{
       Alert.alert('Please select a response');
     }
@@ -108,7 +119,7 @@ function overAll(qList, mainTitle, subTitle) {
           {mainTitle}
         </Text>
         {qList.map(type => EachButton(type, qList))}
-        <View style={styles.filler} />
+        <View style={fillerSize()} />
         <View style = {continueBStyle()}>
           <Button
           title = "Continue"
@@ -116,11 +127,20 @@ function overAll(qList, mainTitle, subTitle) {
           onPress = {() => togNext()}
           />
         </View>
+        <Text>{currentAnswer}</Text>
       </View>
     );
   }
   return QRender();
- }
+  function fillerSize(){
+    var distance = 92 - ((qList.length - 3)*28)
+    return(
+      {
+        marginVertical: distance,
+      }
+    )
+  }
+}
   
  const styles = StyleSheet.create({
   container: {
@@ -138,7 +158,6 @@ function overAll(qList, mainTitle, subTitle) {
   title: {
     textAlign: 'left',
     marginVertical: 16,
-    //fontFamily: "SF Pro Display",
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 22,
@@ -152,7 +171,6 @@ function overAll(qList, mainTitle, subTitle) {
   buttonStyleOn: {
     backgroundColor: '#007AFF',
     borderColor: '#007AFF',
-    //borderColor: 'black',
     borderRadius: 10,
     borderWidth: 1,
   },

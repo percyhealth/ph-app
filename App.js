@@ -11,7 +11,6 @@ import {
 import FirstScreen from './src/scripts/screens/firstScreen';
 import SecondScreen from './src/scripts/screens/secondScreen';
 import HomeScreen1 from './src/scripts/screens/HomeScreen1';
-// import ThirdScreen from './Screens/thirdScreen';
 import ProfileScreen1 from './src/scripts/screens/profileScreen1';
 import HomeAddScreen from './src/scripts/screens/homeAddScreen';
 import ThirdScreen from './src/scripts/screens/thirdScreen';
