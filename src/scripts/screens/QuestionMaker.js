@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable no-undef */
 import React, {useState} from 'react';
 import {
   StyleSheet,
@@ -9,7 +11,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 const Separator = () => <View style={styles.separator} />;
- 
+
 function overAll(qList, mainTitle, subTitle) {
   const [currentAnswer, setCurrentAnswer] = useState("");
   function resetList(){
@@ -17,7 +19,7 @@ function overAll(qList, mainTitle, subTitle) {
     for (var i = 0; i < qList.length; i++) {
       paraList.push(false);
     }
-    return(paraList);
+    return paraList;
   }
   const [boolList, setBoolList] = useState(resetList());
   function EachButton(string, theList) {
@@ -41,90 +43,88 @@ function overAll(qList, mainTitle, subTitle) {
       return("");
     }
     function bStyle() {
-      if(boolList[place]){
-        return (styles.buttonStyleOn)
-      }else if(!boolList[place]){
-        return (styles.buttonStyleOff)
+      if (boolList[place]) {
+        return styles.buttonStyleOn;
+      } else if (!boolList[place]) {
+        return styles.buttonStyleOff;
       }
     }
-    function bTxtColor(){
-      if(boolList[place]){
-        return ('white');
-      }else if(!boolList[place]){
-        return ('black');
+    function bTxtColor() {
+      if (boolList[place]) {
+        return 'white';
+      } else if (!boolList[place]) {
+        return 'black';
       }
     }
     function pressFunc() {
-      tempBool  = resetList();
+      tempBool = resetList();
       tempBool[place] = !boolList[place];
       setBoolList(tempBool);
       setCurrentAnswer(qList[place]);
     }
-  
+
     return (
       <View>
         <View style={bStyle()}>
           <Button
-          title={string}
-          color={bTxtColor()}
-          onPress={() => pressFunc()}
+            title={string}
+            color={bTxtColor()}
+            onPress={() => pressFunc()}
           />
         </View>
         <Separator />
       </View>
     );
   }
-  function optionSelected(){
+  function optionSelected() {
     var Selected = false;
-    for(var i = 0; i< boolList.length;i++){
-      if(boolList[i]){
+    for (var i = 0; i < boolList.length; i++) {
+      if (boolList[i]) {
         Selected = true;
       }
     }
-    return(Selected);
+    return Selected;
   }
-  function togNext(){
+  function togNext() {
     var opSelected = optionSelected();
-    if(opSelected){
+    if (opSelected) {
       Alert.alert('You May Pass');
       setCurrentAnswer(currentResponse());
     }else{
       Alert.alert('Please select a response');
     }
   }
-  function continueBStyle(){
+  function continueBStyle() {
     var opSelected = optionSelected();
-    if(opSelected){
-      return(styles.buttonStyleOn);
-    }else{
-      return(styles.buttonStyleOff);
+    if (opSelected) {
+      return styles.buttonStyleOn;
+    } else {
+      return styles.buttonStyleOff;
     }
   }
-  function continueBColor(){
+  function continueBColor() {
     var opSelected = optionSelected();
-    if(opSelected){
-      return('white');
-    }else{
-      return('black');
+    if (opSelected) {
+      return 'white';
+    } else {
+      return 'black';
     }
   }
-  function QRender(){
+  function QRender() {
     return (
       <View>
         {/* <Text style={styles.head_title}>
           {subTitle}
         </Text> */}
         {subTitle}
-        <Text style={styles.title}>
-          {mainTitle}
-        </Text>
+        <Text style={styles.title}>{mainTitle}</Text>
         {qList.map(type => EachButton(type, qList))}
         <View style={fillerSize()} />
         <View style = {continueBStyle()}>
           <Button
-          title = "Continue"
-          color = {continueBColor()}
-          onPress = {() => togNext()}
+            title="Continue"
+            color={continueBColor()}
+            onPress={() => togNext()}
           />
         </View>
         <Text>{currentAnswer}</Text>
@@ -132,6 +132,7 @@ function overAll(qList, mainTitle, subTitle) {
     );
   }
   return QRender();
+
   function fillerSize(){
     var distance = 92 - ((qList.length - 3)*28)
     return(
@@ -188,8 +189,6 @@ function overAll(qList, mainTitle, subTitle) {
   filler: {
     marginVertical: 92,
   },
- });
-  
- export default overAll;
-  
- 
+});
+
+export default overAll;
