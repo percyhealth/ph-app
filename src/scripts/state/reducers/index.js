@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
 
-import Questionaires from './questionaire';
+import questionairesReducer from './questionaire';
 
 const rootReducer = combineReducers({
-  Questionaires,
+  questionairesReducer,
 });
 
 export default rootReducer;

@@ -14,32 +14,51 @@ import {
 // commenting out bc unsued and style.separator causing an error
 // const Separator = () => <View style={styles.separator} />;
 
- 
-const ThirdScreenFunc = ({navigation}) => {
+const ThirdScreenFunc = props => {
+  console.log('src/scripts/screens/thirdScreen.js props', props);
+  const {questionaires} = props;
+  console.log(
+    'src/scripts/screens/thirdScreen.js props before get:',
+    questionaires,
+  );
+  // if (!questionaires === null) {
+  //   props.getQuestionaires();
+  // }
+  // props.getQuestionaires is undefined
+  if (!questionaires) {
+    props.getQuestionaires();
+  }
+  console.log(
+    'src/scripts/screens/thirdScreen.js props after get:',
+    questionaires,
+  );
   const subTitle = (
-  <Text style={styles.head_title}>
-    How does <Text style={styles.title_bold}>your health limit you</Text>{' '}
-    in
-  </Text>);
-  const mainTitle = "Moderate activities, such as moving a table, pushing a vacuum cleaner bowling, or playing golf";
-  const types = ['Yes, limited a lot', 'Yes, limited a little', 'No, not limited at all'];
+    <Text style={styles.head_title}>
+      How does <Text style={styles.title_bold}>your health limit you</Text> in
+    </Text>
+  );
+  const mainTitle =
+    'Moderate activities, such as moving a table, pushing a vacuum cleaner bowling, or playing golf';
+  const types = [
+    'Yes, limited a lot',
+    'Yes, limited a little',
+    'No, not limited at all',
+  ];
   function TheRendered() {
     return QRender(types, mainTitle, subTitle);
   }
   return (
-    <SafeAreaView style= {styles.container}>
+    <SafeAreaView style={styles.container}>
       <View>
-        <TheRendered/>
+        <TheRendered />
       </View>
     </SafeAreaView>
-   
   );
- };
-  
- export default ThirdScreenFunc;
-  
-  
- const styles = StyleSheet.create({
+};
+
+export default ThirdScreenFunc;
+
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     // justifyContent: 'flex-start',
@@ -58,6 +77,4 @@ const ThirdScreenFunc = ({navigation}) => {
     opacity: 0.9,
     fontWeight: 'bold',
   },
- });
-  
- 
+});

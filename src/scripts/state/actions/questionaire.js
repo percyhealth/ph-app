@@ -1,14 +1,22 @@
 import * as QuestionaireService from '../../services/questionaire';
 
 export const ActionTypes = {
-  QUESTIONAIRE: 'QUESTIONAIRE',
+  GET_QUESTIONAIRES: 'GET_QUESTIONAIRES',
   API_ERROR: 'API_ERROR',
 };
 export const getQuestionaires = () => {
   return async dispatch => {
     try {
+      console.log('init await getQuestionaires');
       const questionaires = await QuestionaireService.getQuestionaires();
-      dispatch({type: ActionTypes.QUESTIONAIRE, payload: questionaires.data});
+      console.log(
+        'src/scripts/state/actions/questionaire.js ----- line 11:',
+        questionaires,
+      );
+      dispatch({
+        type: ActionTypes.GET_QUESTIONAIRES,
+        payload: questionaires.data,
+      });
     } catch (error) {
       dispatch({type: ActionTypes.API_ERROR, payload: error});
     }
