@@ -13,7 +13,8 @@ import {
 const Separator = () => <View style={styles.separator} />;
 
 function overAll(qList, mainTitle, subTitle) {
-  function resetList() {
+  const [currentAnswer, setCurrentAnswer] = useState("");
+  function resetList(){
     paraList = [];
     for (var i = 0; i < qList.length; i++) {
       paraList.push(false);
@@ -33,6 +34,14 @@ function overAll(qList, mainTitle, subTitle) {
         place++;
       }
     }
+    function currentResponse(){
+      for(var i = 0; i< boolList.length;i++){
+        if(boolList[i]){
+          return(qList[i]);
+        }
+      }
+      return("");
+    }
     function bStyle() {
       if (boolList[place]) {
         return styles.buttonStyleOn;
@@ -51,6 +60,7 @@ function overAll(qList, mainTitle, subTitle) {
       tempBool = resetList();
       tempBool[place] = !boolList[place];
       setBoolList(tempBool);
+      setCurrentAnswer(qList[place]);
     }
 
     return (
@@ -79,7 +89,8 @@ function overAll(qList, mainTitle, subTitle) {
     var opSelected = optionSelected();
     if (opSelected) {
       Alert.alert('You May Pass');
-    } else {
+      setCurrentAnswer(currentResponse());
+    }else{
       Alert.alert('Please select a response');
     }
   }
@@ -108,21 +119,31 @@ function overAll(qList, mainTitle, subTitle) {
         {subTitle}
         <Text style={styles.title}>{mainTitle}</Text>
         {qList.map(type => EachButton(type, qList))}
-        <View style={styles.filler} />
-        <View style={continueBStyle()}>
+        <View style={fillerSize()} />
+        <View style = {continueBStyle()}>
           <Button
             title="Continue"
             color={continueBColor()}
             onPress={() => togNext()}
           />
         </View>
+        <Text>{currentAnswer}</Text>
       </View>
     );
   }
   return QRender();
-}
 
-const styles = StyleSheet.create({
+  function fillerSize(){
+    var distance = 92 - ((qList.length - 3)*28)
+    return(
+      {
+        marginVertical: distance,
+      }
+    )
+  }
+}
+  
+ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // justifyContent: 'flex-start',
@@ -138,7 +159,6 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'left',
     marginVertical: 16,
-    //fontFamily: "SF Pro Display",
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 22,
@@ -152,7 +172,6 @@ const styles = StyleSheet.create({
   buttonStyleOn: {
     backgroundColor: '#007AFF',
     borderColor: '#007AFF',
-    //borderColor: 'black',
     borderRadius: 10,
     borderWidth: 1,
   },
