@@ -1,3 +1,9 @@
+/*
+ * For some reason this code is not being executed properly.
+ * Likely an issue with importing/exporting.
+ * For now, mapping functions occur at the bottom of respective screens.
+ * ex. ThirdScreen.js
+ */
 // import {connect} from 'react-redux';
 // import {getQuestionaires} from '../state/actions';
 

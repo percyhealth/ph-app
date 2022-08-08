@@ -3,14 +3,17 @@ import {ActionTypes} from '../actions';
 // initial state
 const initialState = {
   questionaires: null,
+  questionaire: null,
 };
 
 // reducer
 const QuestionairesReducer = (state = initialState, action) => {
   console.log('src/scripts/state/reducers/questionaire.js-----line 10', action);
   switch (action.type) {
-    case ActionTypes.QUESTIONAIRE:
+    case ActionTypes.GET_QUESTIONAIRES:
       return {...state, questionaires: action.payload};
+    case ActionTypes.GET_ONE_QUESTIONAIRE:
+      return {...state, questionaire: action.payload};
     // case ActionTypes.LOGOUT:
     //   return {...initialState};
     default:

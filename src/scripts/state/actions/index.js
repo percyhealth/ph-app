@@ -1,6 +1,7 @@
 import {
   ActionTypes as questionairesActionTypes,
   getQuestionaires,
+  getOneQuestionaire,
   // createQuestionaire,
   // deleteQuestionaire,
 } from './questionaire';
@@ -12,6 +13,7 @@ const ActionTypes = {
 export {
   ActionTypes,
   getQuestionaires,
+  getOneQuestionaire,
   // createQuestionaire,
   // deleteQuestionaire,
 };
