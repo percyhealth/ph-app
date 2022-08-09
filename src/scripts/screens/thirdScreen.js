@@ -9,33 +9,27 @@ import {
   Alert,
   TouchableHighlight,
 } from 'react-native';
+import {connect} from 'react-redux';
+import {getQuestionaires, getOneQuestionaire} from '../state/actions';
 import SF36 from './SF36.json';
-//import {Text} from 'react-native';
-// commenting out bc unsued and style.separator causing an error
 
 // const Separator = () => <View style={styles.separator} />;
-
-// const ThirdScreenFunc = props => {
-// console.log('src/scripts/screens/thirdScreen.js props', props);
-// const {questionaires} = props;
-// console.log(
-//   'src/scripts/screens/thirdScreen.js props before get:',
-//   questionaires,
-// );
-// if (!questionaires === null) {
-//   props.getQuestionaires();
-// }
-// props.getQuestionaires is undefined
-// if (!questionaires) {
-//   props.getQuestionaires();
-// }
-// console.log(
-//   'src/scripts/screens/thirdScreen.js props after get:',
-//   questionaires,
-// );
-// const Separator = () => <View style={styles.separator} />;\\
 const responsesArray = SF36.questions[0].responses;
-const ThirdScreenFunc = ({navigation}) => {
+
+const ThirdScreenFunc = props => {
+  const {questionaires, questionaire} = props;
+  // get all questionaires
+  if (!questionaires) {
+    props.getQuestionaires();
+  }
+  if (!questionaire) {
+    // this is the current id for SF-36.
+    // in the future, there should be a way to look up
+    // a survey by name, not id
+    props.getOneQuestionaire('62d7187c8cfe00aa3a361d10');
+  }
+  // questionaires can now be parsed similar to responsesArray
+  console.log('src/scripts/screens/thirdScreen.js', questionaire);
   // const subTitle = (
   // <Text style={styles.head_title}>
   //   How does <Text style={styles.title_bold}>your health limit you</Text>{' '}
@@ -64,7 +58,28 @@ const ThirdScreenFunc = ({navigation}) => {
   );
 };
 
-export default ThirdScreenFunc;
+const mapStateToProps = state => {
+  return {
+    questionaires: state.questionairesReducer.questionaires,
+    questionaire: state.questionairesReducer.questionaire,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getQuestionaires: () => {
+      dispatch(getQuestionaires());
+    },
+    getOneQuestionaire: id => {
+      dispatch(getOneQuestionaire(id));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ThirdScreenFunc);
+
+// see ./index.js, export/import did not agree with file separation
+// export default ThirdScreenFunc;
 
 const styles = StyleSheet.create({
   container: {

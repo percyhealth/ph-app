@@ -36,8 +36,8 @@ const HomeScreen = () => {
 };
 
 const AddSurvey = props => {
-  console.log('addSurvey props', props);
-  console.log(props.getQuestionaires);
+  // console.log('addSurvey props', props);
+  // console.log(props.getQuestionaires);
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -84,8 +84,6 @@ const ProfileScreen = () => {
 </Stack.Screen> */
 
 const RootStackNavigator = props => {
-  console.log('src/scripts/AppNavigator.js', props);
-  console.log(props.getQuestionaires);
   return (
     <NavigationContainer>
       <Tab.Navigator>
@@ -98,10 +96,12 @@ const RootStackNavigator = props => {
           name="Add"
           component={AddSurvey}
           options={{headerShown: false}}
-          navigation={props.navigation}
+          // navigation={props.navigation}
         />
         {/* <Stack.Screen name="Add" options={{headerShown: false}}>
-          {props => <AddSurvey {...props} />}
+          {props => (
+            <AddSurvey {...props} getQuestionaires={props.getQuestionaires} />
+          )}
         </Stack.Screen> */}
         <Stack.Screen
           name="Profile"
@@ -113,23 +113,21 @@ const RootStackNavigator = props => {
   );
 };
 
-// this should probably not be in here. again, I would like App.js to only have app component,
-// and have the src/index have this shit in it
-// ideally App component should have no props,
-// check Flourish AppNavigator.js
-const mapStateToProps = state => {
-  console.log('src/scripts/screens/index.js------line 9', state);
-  return {
-    questionaires: state.questionairesReducer.questionaires,
-  };
-};
+// moved to screen files
+// const mapStateToProps = state => {
+//   // console.log('appNav MapStateToProps', state);
+//   return {
+//     questionaires: state.questionairesReducer.questionaires,
+//   };
+// };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getQuestionaires: () => {
-      dispatch(getQuestionaires());
-    },
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getQuestionaires: () => {
+//       dispatch(getQuestionaires());
+//     },
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RootStackNavigator);
+// export default connect(mapStateToProps, mapDispatchToProps)(RootStackNavigator);
+export default RootStackNavigator;
