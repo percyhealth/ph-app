@@ -36,7 +36,7 @@ const HomeScreen = () => {
 };
 
 const AddSurvey = props => {
-  console.log('addSurvey props', props);
+  // console.log('addSurvey props', props);
   // console.log(props.getQuestionaires);
   return (
     <Stack.Navigator>
