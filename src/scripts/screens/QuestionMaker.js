@@ -34,14 +34,6 @@ function overAll(qList, mainTitle, subTitle) {
         place++;
       }
     }
-    function currentResponse(){
-      for(var i = 0; i< boolList.length;i++){
-        if(boolList[i]){
-          return(qList[i]);
-        }
-      }
-      return("");
-    }
     function bStyle() {
       if (boolList[place]) {
         return styles.buttonStyleOn;
@@ -76,6 +68,14 @@ function overAll(qList, mainTitle, subTitle) {
       </View>
     );
   }
+  function currentResponse(){
+    for(var i = 0; i< boolList.length;i++){
+      if(boolList[i]){
+        return(qList[i]);
+      }
+    }
+    return("");
+  }
   function optionSelected() {
     var Selected = false;
     for (var i = 0; i < boolList.length; i++) {
@@ -88,8 +88,9 @@ function overAll(qList, mainTitle, subTitle) {
   function togNext() {
     var opSelected = optionSelected();
     if (opSelected) {
-      Alert.alert('You May Pass');
-      setCurrentAnswer(currentResponse());
+      var currentAnswer = currentResponse()
+      Alert.alert(currentAnswer);
+      //integer/index
     }else{
       Alert.alert('Please select a response');
     }
@@ -113,10 +114,9 @@ function overAll(qList, mainTitle, subTitle) {
   function QRender() {
     return (
       <View>
-        {/* <Text style={styles.head_title}>
+        <Text style={styles.head_title}>
           {subTitle}
-        </Text> */}
-        {subTitle}
+        </Text>
         <Text style={styles.title}>{mainTitle}</Text>
         {qList.map(type => EachButton(type, qList))}
         <View style={fillerSize()} />
