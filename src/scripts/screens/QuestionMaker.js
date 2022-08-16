@@ -90,7 +90,7 @@ function overAll(qList, mainTitle, subTitle) {
     if (opSelected) {
       var currentAnswer = currentResponse()
       Alert.alert(currentAnswer);
-      //integer/index
+      //add integer/index
     }else{
       Alert.alert('Please select a response');
     }
