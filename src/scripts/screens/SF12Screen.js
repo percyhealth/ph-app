@@ -27,11 +27,12 @@ const ThirdScreenFunc = props => {
     // this is the current id for SF-36.
     // in the future, there should be a way to look up
     // a survey by name, not id
-    props.getOneQuestionaire('62d7187c8cfe00aa3a361d10');
+    //SF-12: 62fa69824ad471fcbad8577f
+    props.getOneQuestionaire('62fa69824ad471fcbad8577f');
     console.log(questionaire);
   }
   // questionaires can now be parsed similar to responsesArray
-  console.log('src/scripts/screens/thirdScreen.js', questionaire);
+  console.log('src/scripts/screens/SF12Screen.js', questionaire);
   // const subTitle = (
   // <Text style={styles.head_title}>
   //   How does <Text style={styles.title_bold}>your health limit you</Text>{' '}

@@ -11,10 +11,11 @@ import {
 } from 'react-native';
 import FirstScreen from './screens/firstScreen';
 import SecondScreen from './screens/secondScreen';
-import HomeScreen1 from './screens/HomeScreen1';
+import HomeScreen1 from './screens/MainHomeScreen';
 import ProfileScreen1 from './screens/profileScreen1';
-import HomeAddScreen from './screens/homeAddScreen';
-import ThirdScreen from './screens/thirdScreen';
+import HomeAddScreen from './screens/AddSurveyScreen';
+import ThirdScreen from './screens/SF36Screen';
+import SF12Screen from './screens/SF12Screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -45,24 +46,12 @@ const AddSurvey = props => {
         component={HomeAddScreen}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="firstScreen"
-        component={FirstScreen}
-        options={{title: 'SF-36'}}
-      />
-      <Stack.Screen
-        name="secondScreen"
-        component={SecondScreen}
-        options={{title: 'SF-36'}}
-      />
-      <Stack.Screen name="thirdScreen" options={{title: 'Third Screen'}}>
+      <Stack.Screen name="thirdScreen" options={{title: 'SF-36'}}>
         {props => <ThirdScreen {...props} />}
       </Stack.Screen>
-      {/* <Stack.Screen
-        name="thirdScreen"
-        component={ThirdScreen}
-        options={{title: 'Third Screen'}}
-      /> */}
+      <Stack.Screen name="SF12Screen" options={{title: 'SF-12'}}>
+        {props => <SF12Screen {...props} />}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };

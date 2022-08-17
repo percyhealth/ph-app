@@ -13,8 +13,11 @@ const Separator = () => <View style={styles.separator} />;
 //add list paramater, three individual strings, or none?
 
 const HomeAddScreen = ({navigation}) => {
-  function navigate() {
-    navigation.navigate('firstScreen');
+  function navigate36() {
+    navigation.navigate('thirdScreen');
+  }
+  function navigate12() {
+    navigation.navigate('SF12Screen');
   }
   return (
     <SafeAreaView style={styles.container}>
@@ -22,7 +25,11 @@ const HomeAddScreen = ({navigation}) => {
         <Text style={styles.title}>Add New Survey:</Text>
       </View>
       <View style={styles.buttonStyleOn}>
-        <Button title="New Survey" color="white" onPress={() => navigate()} />
+        <Button title="SF-36 Survey" color="white" onPress={() => navigate36()} />
+      </View>
+      <Separator/>
+      <View style={styles.buttonStyleOn}>
+        <Button title="SF-12 Survey" color="white" onPress={() => navigate12()} />
       </View>
     </SafeAreaView>
   );
