@@ -5,10 +5,8 @@ const API_URL = 'http://localhost:9090';
 const URL = `${API_URL}/questionaires`;
 
 export const getQuestionaires = async () => {
-  console.log('shooting for endpoint', URL);
   try {
     const {data} = await axios.get(URL);
-    console.log('src/scripts/services/questionaire.js --- line 10', data);
     return data;
   } catch (error) {
     console.log(error);

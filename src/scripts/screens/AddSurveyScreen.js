@@ -25,11 +25,19 @@ const HomeAddScreen = ({navigation}) => {
         <Text style={styles.title}>Add New Survey:</Text>
       </View>
       <View style={styles.buttonStyleOn}>
-        <Button title="SF-36 Survey" color="white" onPress={() => navigate36()} />
+        <Button
+          title="SF-36 Survey"
+          color="white"
+          onPress={() => navigate36()}
+        />
       </View>
-      <Separator/>
+      <Separator />
       <View style={styles.buttonStyleOn}>
-        <Button title="SF-12 Survey" color="white" onPress={() => navigate12()} />
+        <Button
+          title="SF-12 Survey"
+          color="white"
+          onPress={() => navigate12()}
+        />
       </View>
     </SafeAreaView>
   );

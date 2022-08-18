@@ -9,10 +9,6 @@ export const getQuestionaires = () => {
   return async dispatch => {
     try {
       const questionaires = await QuestionaireService.getQuestionaires();
-      console.log(
-        'src/scripts/state/actions/questionaire.js ----- line 11:',
-        questionaires,
-      );
       dispatch({
         type: ActionTypes.GET_QUESTIONAIRES,
         payload: questionaires,
@@ -27,6 +23,7 @@ export const getOneQuestionaire = id => {
   return async dispatch => {
     try {
       const questionaire = await QuestionaireService.getQuestionaire(id);
+      console.log('state/actions', questionaire);
       dispatch({
         type: ActionTypes.GET_ONE_QUESTIONAIRE,
         payload: questionaire,

@@ -8,7 +8,6 @@ const initialState = {
 
 // reducer
 const QuestionairesReducer = (state = initialState, action) => {
-  console.log('src/scripts/state/reducers/questionaire.js-----line 10', action);
   switch (action.type) {
     case ActionTypes.GET_QUESTIONAIRES:
       return {...state, questionaires: action.payload};

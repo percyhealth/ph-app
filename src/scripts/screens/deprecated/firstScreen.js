@@ -37,7 +37,7 @@ const ToggleGroup = ({navigation}) => {
   }
   function togNext(bNext) {
     if (bNext) {
-      Alert.alert('You may pass');
+      // Alert.alert('You may pass');
       navigate();
     } else {
       Alert.alert('Please select a response');

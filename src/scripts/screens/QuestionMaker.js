@@ -13,8 +13,8 @@ import {
 const Separator = () => <View style={styles.separator} />;
 
 function overAll(qList, mainTitle, subTitle) {
-  const [currentAnswer, setCurrentAnswer] = useState("");
-  function resetList(){
+  const [currentAnswer, setCurrentAnswer] = useState('');
+  function resetList() {
     paraList = [];
     for (var i = 0; i < qList.length; i++) {
       paraList.push(false);
@@ -68,13 +68,13 @@ function overAll(qList, mainTitle, subTitle) {
       </View>
     );
   }
-  function currentResponse(){
-    for(var i = 0; i< boolList.length;i++){
-      if(boolList[i]){
-        return(qList[i]);
+  function currentResponse() {
+    for (var i = 0; i < boolList.length; i++) {
+      if (boolList[i]) {
+        return qList[i];
       }
     }
-    return("");
+    return '';
   }
   function optionSelected() {
     var Selected = false;
@@ -88,10 +88,10 @@ function overAll(qList, mainTitle, subTitle) {
   function togNext() {
     var opSelected = optionSelected();
     if (opSelected) {
-      var currentAnswer = currentResponse()
-      Alert.alert(currentAnswer);
+      var currentAnswer = currentResponse();
+      // Alert.alert(currentAnswer);
       //add integer/index
-    }else{
+    } else {
       Alert.alert('Please select a response');
     }
   }
@@ -114,13 +114,11 @@ function overAll(qList, mainTitle, subTitle) {
   function QRender() {
     return (
       <View>
-        <Text style={styles.head_title}>
-          {subTitle}
-        </Text>
+        <Text style={styles.head_title}>{subTitle}</Text>
         <Text style={styles.title}>{mainTitle}</Text>
         {qList.map(type => EachButton(type, qList))}
         <View style={fillerSize()} />
-        <View style = {continueBStyle()}>
+        <View style={continueBStyle()}>
           <Button
             title="Continue"
             color={continueBColor()}
@@ -133,17 +131,15 @@ function overAll(qList, mainTitle, subTitle) {
   }
   return QRender();
 
-  function fillerSize(){
-    var distance = 92 - ((qList.length - 3)*28)
-    return(
-      {
-        marginVertical: distance,
-      }
-    )
+  function fillerSize() {
+    var distance = 92 - (qList.length - 3) * 28;
+    return {
+      marginVertical: distance,
+    };
   }
 }
-  
- const styles = StyleSheet.create({
+
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     // justifyContent: 'flex-start',

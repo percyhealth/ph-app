@@ -10,9 +10,9 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import {connect} from 'react-redux';
-import {getQuestionaires, getOneQuestionaire} from '../state/actions';
+import {getQuestionaires, getOneQuestionaire} from '../../state/actions';
 
-const SF36Func = props => {
+const ThirdScreenFunc = props => {
   const [currentScreen, setScreen] = useState(1);
   const {questionaires, questionaire} = props;
   const [canContinue, setContinue] = useState(false);
@@ -25,12 +25,10 @@ const SF36Func = props => {
     // this is the current id for SF-36.
     // in the future, there should be a way to look up
     // a survey by name, not id
-    // SF-12: 62fa69824ad471fcbad8577f
-    // SF-36: 62d7187c8cfe00aa3a361d10
-    console.log('getting questionaire');
     props.getOneQuestionaire('62d7187c8cfe00aa3a361d10');
     console.log(questionaire);
   }
+
   const responsesArray = questionaire.questions[0][currentScreen].responses;
   const instructions = questionaire.questions[0][currentScreen].instructions;
   const mainTitle = questionaire.questions[0][currentScreen].question;
@@ -141,7 +139,7 @@ const SF36Func = props => {
         var currentAnswer = currentResponse();
         // Alert.alert(currentAnswer);
         setScreen(currentScreen + 1);
-        // add integer/index
+        //add integer/index
       } else {
         setContinue(false);
         Alert.alert('Please select a response');
@@ -193,8 +191,6 @@ const SF36Func = props => {
 };
 
 const mapStateToProps = state => {
-  // console.log(state.questionairesReducer);
-  // const q = getOneQuestionaire
   return {
     questionaires: state.questionairesReducer.questionaires,
     questionaire: state.questionairesReducer.questionaire,
@@ -212,7 +208,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SF36Func);
+export default connect(mapStateToProps, mapDispatchToProps)(ThirdScreenFunc);
 
 // see ./index.js, export/import did not agree with file separation
 // export default ThirdScreenFunc;
