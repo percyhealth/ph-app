@@ -1,3 +1,4 @@
+THIS FUNCTION DISPLAYS EACH QUESTION INDIVIDUALLY, IT WAS INCOROPORATED IN THE SF12Screen.js and SF36Screen.js code
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-undef */
 import React, {useState} from 'react';

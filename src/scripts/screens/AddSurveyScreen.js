@@ -50,18 +50,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginVertical: 100,
   },
-  head_title: {
-    //fontFamily: "SF Pro Display",
-    fontSize: 17,
-    textAlign: 'left',
-    opacity: 0.9,
-  },
-  title_bold: {
-    fontSize: 17,
-    textAlign: 'left',
-    opacity: 0.9,
-    fontWeight: 'bold',
-  },
   title: {
     textAlign: 'left',
     marginVertical: 16,
@@ -83,19 +71,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
   },
-  buttonStyleOff: {
-    backgroundColor: 'white',
-    borderColor: 'black',
-    borderRadius: 10,
-    borderWidth: 1,
-  },
   separator: {
     marginVertical: 8,
     borderBottomColor: 'white',
     borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  filler: {
-    marginVertical: 100,
   },
 });
 
